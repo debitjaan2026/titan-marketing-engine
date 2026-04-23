@@ -2,32 +2,34 @@ name: AI Master Engine Auto-Update
 
 on:
   schedule:
-    - cron: '0 * * * *' # প্রতি ঘণ্টায় একবার অটোমেটিক চলবে
-  workflow_dispatch: # তুমি চাইলে নিজেও রান করতে পারবে
+    - cron: '0 * * * *'
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # এটি গিটহাবকে ফাইল লেখার অনুমতি দেবে
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Run Master Brain
-        run: python master_brain.py
+        run: |
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Run Factory to Generate Page
         run: python factory.py
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./pages
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add index.html
+          git commit -m "Update landing page" || echo "No changes to commit"
+          git push
