@@ -1,36 +1,25 @@
 import random
 
-# বিভিন্ন ক্যাটাগরির জন্য কিলার হুকস
+# Global high-converting hooks for USA/UK traffic
 TRAFFIC_HOOKS = {
-    "movie": [
-        "🎥 এই মুভি ক্লিপটা পুরো ইন্টারনেটে আগুন লাগিয়ে দিয়েছে! মিস করবেন না: ",
-        "🍿 মুভিটির এই পার্টটি দেখার জন্য সবাই পাগল হয়ে খুঁজছে! এখানে দেখুন: ",
-        "🔥 রিলিজের আগেই লিক হয়ে গেল ভাইরাল ক্লিপটি! এখনই দেখে নিন: "
-    ],
     "viral": [
-        "😱 কেউ বিশ্বাস করতে পারছে না এটা সত্যিই ঘটেছে! ভিডিও দেখুন: ",
-        "🔥 সোশ্যাল মিডিয়ায় এখন শুধু এই ভিডিওটিই ঘুরছে! দেখার জন্য ক্লিক করুন: ",
-        "⚡ ব্রেকিং নিউজ! এই মাত্র পাওয়া ভাইরাল ক্লিপটি দেখুন এখানে: "
+        "🔥 UNBELIEVABLE! This clip is breaking the internet right now: ",
+        "😱 You won't believe what happened in this video! Watch here: ",
+        "🎥 VIRAL ALERT: This secret clip is trending everywhere: "
     ],
-    "hot_trend": [
-        "🔞 ভাইরাল হওয়া সেই ভিডিওটি অবশেষে ডিলিট হওয়ার আগে দেখে নিন: ",
-        "🔥 ইন্টারনেটে ঝড় তোলা সেই গোপন ভিডিওটি দেখুন এখানে: ",
-        "🎬 ডিলিট হওয়ার আগেই এই ভিডিওটি সংগ্রহ করে রাখুন: "
+    "movie": [
+        "🍿 LEAKED: The most searched movie scene of 2026 is here: ",
+        "🎥 WATCH NOW: Full HD clip of the trending blockbuster: ",
+        "🎬 Everyone is looking for this scene! Found it here: "
     ]
 }
 
-def generate_social_post(link):
-    # সব ক্যাটাগরি থেকে একটি র্যান্ডম হুক সিলেক্ট করা
+def generate_global_promo(link):
     category = random.choice(list(TRAFFIC_HOOKS.keys()))
     hook = random.choice(TRAFFIC_HOOKS[category])
-    
-    print("\n" + "="*40)
-    print("🚀 সোশ্যাল মিডিয়াতে শেয়ার করার জন্য পোস্ট রেডি!")
-    print("="*40)
-    print(f"\n{hook}\n👉 {link}\n")
-    print("="*40)
-    print("টিপস: এই লেখাটি কপি করে ফেসবুক/টেলিগ্রাম/পিন্টারেস্টে কমেন্ট করুন!")
+    print(f"\n🚀 Ready for Facebook/Twitter/Reddit (Global):\n\n{hook}\n👉 {link}\n")
 
 if __name__ == "__main__":
     MY_LINK = "https://debitjaan2026.github.io/Titan-AI-Master/"
-    generate_social_post(MY_LINK)
+    generate_global_promo(MY_LINK)
+    
